@@ -1,34 +1,30 @@
 import React from 'react'
 
-const cities = ['NATIONWIDE', 'CA', 'NY', 'VT']
-const years = ['2012', '2013', '2014', '2015']
-const ethnicities = ['Unknown', 'Not Hispanic or Latino', 'Multiple', 'Hispanic or Latino']
-const sexes = ['Male', 'Female', 'Unknown']
+const locations = ['NATIONWIDE', 'STATE']
+const searches = ['Crime Estimates', 'Hate Crimes', 'Offenders', 'Victims']
+const years = ['1994', '1995', '1996', '1997', '1998', '1999', '2000', '2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016']
 
 export const Controls = () => (
   <div className='sidebar-left'>
-    <Dropdown
-      label='SELECT LOCATION'
-      values={cities}
-    />
-    <Dropdown
-      label='YEAR'
-      values={years}
-    />
-    <Dropdown
-      label='ETHNICITY'
-      values={ethnicities}
-    />
-    <CheckBox />
-    <Radio
-      values={sexes}
-    />
+    <h4>FILTERS</h4>
+    <div className='controls'>
+      <Dropdown
+        label='SELECT LOCATION'
+        values={locations}
+      />
+      <hr />
+      <Dropdown
+        label='SEARCH FOR'
+        values={searches}
+      />
+      <hr />
+      <Dropdown
+        label='YEAR'
+        values={years}
+      />
+    </div>
   </div>
 )
-
-// if nationwide then show options for arrests, estimated counts of crimes, annual counts of crime
-
-// category: hate crimes, human trafficking, offenders, victim count
 
 const Radio = (props) => (
   <div className='radio-btn'>
@@ -43,15 +39,7 @@ const CheckBox = () => (
   <div className='checkbox'>
     <div>
       <input type='checkbox' />
-      <label>HATE CRIMES</label>
-    </div>
-    <div>
-      <input type='checkbox' />
-      <label>OFFENDERS</label>
-    </div>
-    <div>
-      <input type='checkbox' />
-      <label>VICTIMS</label>
+      {/* <label>{label}</label> */}
     </div>
   </div>
 )
