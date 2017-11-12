@@ -20,9 +20,9 @@ class App extends Component {
   }
 
   componentDidMount() {
-    // getNationalCrimeEstimates()
-    //   .then(data => console.log('annual counts by category:', data.results))
-    //
+    getNationalCrimeEstimates()
+      .then(data => console.log('annual counts by category:', data.results))
+
     // getNationalArrests()
     //   .then(data => {
     //     let nationalArrests = data.results
@@ -52,11 +52,12 @@ class App extends Component {
     //   .then(data => {console.log(data.results)})
     //
     // // can filter by year && ethnicity
-    // getNationalOffenders()
-    //   .then(data => {
-    //     let filtered = data.results.filter(result => result.ethnicity === 'Hispanic or Latino')
-    //     console.log('national offenders by ethnicity:', filtered)
-    //   })
+    getNationalOffenders()
+      .then(data => {
+        console.log(data.results)
+        let filtered = data.results.filter(result => result.ethnicity === 'Hispanic or Latino')
+        console.log('national offenders by ethnicity:', filtered)
+      })
     // // filter by year
     // getVictimCount()
     //   .then(data => {

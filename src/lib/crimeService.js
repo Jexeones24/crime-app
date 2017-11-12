@@ -6,32 +6,38 @@ export const getNationalArrests = () => {
   return fetch(`${BASE_URL}/arrests/national?api_key=${API_KEY}&per_page=100`)
   .then(resp => resp.json())
 }
-
-export const getHateCrimeCounts = () => {
-  return fetch(`${BASE_URL}hc/count/national/bias_name?page=1&per_page=10&output=json&api_key=${API_KEY}`)
-  .then(resp => resp.json())
-}
-
-export const getEstimatedAnnualCounts = () => {
-  return fetch(`${BASE_URL}estimates/national?page=1&per_page=50&output=json&api_key=${API_KEY}`)
-  .then(resp => resp.json())
-}
-
 // nationwide estimated counts of crime
 export const getNationalCrimeEstimates = () => {
   return fetch(`${BASE_URL}estimates/national?page=1&per_page=50&output=json&api_key=${API_KEY}`)
   .then(resp => resp.json())
 }
+export const getEstimatedAnnualCounts = () => {
+  return fetch(`${BASE_URL}estimates/national?page=1&per_page=50&output=json&api_key=${API_KEY}`)
+  .then(resp => resp.json())
+}
 
+
+// args = state postal code (ny) lower case
+export const getCrimeRatesByState = () => {
+  return fetch(`${BASE_URL}estimates/states/ny?page=1&per_page=50&output=json&api_key=${API_KEY}`)
+  .then(resp => resp.json())
+}
+
+
+export const getHateCrimeCounts = () => {
+  return fetch(`${BASE_URL}hc/count/national/bias_name?page=1&per_page=10&output=json&api_key=${API_KEY}`)
+  .then(resp => resp.json())
+}
 export const getHateCrimesByBiasName = () => {
   return fetch(`${BASE_URL}hc/count/national/bias_name?page=1&per_page=10&output=json&api_key=${API_KEY}`)
   .then(resp => resp.json())
 }
-
 export const getHateCrimesByState = () => {
   return fetch(`${BASE_URL}hc/count/states/NY/bias_name?page=1&per_page=10&output=json&api_key=${API_KEY}`)
   .then(resp => resp.json())
 }
+
+
 
 // args = state, year (figure out how to encode that)
 export const getHumanTraffickingByState = () => {
@@ -39,11 +45,14 @@ export const getHumanTraffickingByState = () => {
   .then(resp => resp.json())
 }
 
+
+
 // args = ethnicity, sex_code, age_num
 export const getNationalOffenders = () => {
   return fetch(`${BASE_URL}offenders/count/national/ethnicity?page=1&per_page=10&output=json&api_key=${API_KEY}`)
   .then(resp => resp.json())
 }
+
 
 // args = ethnicity, offender relationship, circumstance_name
 export const getVictimCount = () => {
@@ -51,11 +60,6 @@ export const getVictimCount = () => {
   .then(resp => resp.json())
 }
 
-// args = state postal code (ny) lower case
-export const getCrimeRatesByState = () => {
-  return fetch(`${BASE_URL}estimates/states/ny?page=1&per_page=50&output=json&api_key=${API_KEY}`)
-  .then(resp => resp.json())
-}
 
 // args = state postal code uppercase
 export const getStateInfo = () => {
