@@ -20,8 +20,8 @@ class App extends Component {
   }
 
   componentDidMount() {
-    // getCrimeEstimatesNationwide()
-    //   .then(data => console.log('crime estimates nationwide:', data.results))
+    getCrimeEstimatesNationwide()
+      .then(data => console.log('crime estimates nationwide:', data.results))
     // getCrimeEstimatesByState()
     //   .then(data => console.log('crime estimates by state:', data.results))
 
