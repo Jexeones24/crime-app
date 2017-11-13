@@ -2,7 +2,7 @@ html, body {
   margin: 0;
   height: 100%;
   width:100%;
-  position:absolute;
+  position:fixed;
   overflow-x: hidden;
   font-family: 'Quattrocento Sans', sans-serif;
 }
@@ -11,8 +11,9 @@ body {
     padding: 0px;
 }
 .App {
-  position: absolute;
-  height: 100%
+  position: fixed;
+  height: 100%;
+  width:100%;
 }
 h1 {
   margin-top: 0;
@@ -61,9 +62,6 @@ a {
 a:hover {
   color:white;
 }
-.nav-links {
-  /*margin-bottom: 10px;*/
-}
 .sidebar-left{
 	float:left;
 	width:15%;
@@ -96,15 +94,21 @@ a:hover {
 table {
   border: 1px solid black;
   border-spacing: 0.3rem;
+  width:100%;
+  table-layout: fixed;
+  box-sizing:border-box;
+  overflow: hidden;
 }
 td, th {
   border: 1px solid #999;
   padding: 0.5rem;
+  word-wrap: break-word;
 }
 .table-container {
   margin-top: 20px;
-  margin-left: 2%;
-  margin-right: 2%;
+  box-sizing: border-box;
+  margin-left: 18px;
+  margin-right: 18px;
 }
 .search-label, .year-label, .state-params-label{
   margin-bottom: 6px;

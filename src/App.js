@@ -18,8 +18,10 @@ class App extends Component {
   }
 
   componentDidMount() {
-    // getCrimeEstimatesNationwide()
-    //   .then(data => console.log('crime estimates nationwide:', data.results))
+    // default table values
+    getCrimeEstimatesNationwide()
+      .then(data => console.log('crime estimates nationwide:', data.results))
+
     // getCrimeEstimatesByState()
     //   .then(data => console.log('crime estimates by state:', data.results))
 
@@ -62,8 +64,6 @@ class App extends Component {
     // getStateInfo(state)
     //   .then(data => {console.log('state info for CA:', data)})
   }
-
-
 
   render () {
     return (

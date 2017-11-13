@@ -19,7 +19,7 @@ export default class Filter extends Component {
     this.setState({
       [property]: e.target.value,
       message: 'You selected '+e.target.value
-    }, () => console.log('state:', this.state))
+    }, () => console.log('state:', this.state, 'callback to App'))
   }
 
   handleSubmit = (e) => {
