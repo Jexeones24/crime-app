@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { getHateCrimeCounts, getCrimeEstimatesNationwide, getHateCrimesByBiasName, getHateCrimesByState, getNationalOffenders, getVictimCount, getCrimeEstimatesByState, getStateInfo } from './lib/crimeService'
 import { Table } from './components/Table'
-import { Controls } from './components/Controls'
+import Filter from './components/Filter'
 import { Footer } from './components/Footer'
 import { Header } from './components/Header'
 import './App.css'
@@ -63,7 +63,7 @@ class App extends Component {
     return (
       <div className='App'>
         <Header />
-        <Controls />
+        <Filter />
         <Main />
         <div className='sidebar-right'></div>
         <Footer />
