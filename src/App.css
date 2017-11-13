@@ -94,6 +94,7 @@ a:hover {
 table {
   border: 1px solid black;
   border-spacing: 0.3rem;
+  /*border-collapse: collapse;*/
   width:100%;
   table-layout: fixed;
   box-sizing:border-box;

@@ -32,13 +32,17 @@ export default class Filter extends Component {
         <div className='state-params-label'>
           <label> CHOOSE STATE</label>
         </div>
-        <div>
-          <select name='state' onChange={this.handleFilterChange.bind(this)}>
-            {states.map((state, i) => <option key={i} name='state' value={state}>{state}</option>)}
-          </select>
-          <form onSubmit={this.handleSubmit}>
-            <button type='submit' >GO</button>
-          </form>
+        <div className='select'>
+          <div>
+            <select name='state' onChange={this.handleFilterChange.bind(this)}>
+              {states.map((state, i) => <option key={i} name='state' value={state}>{state}</option>)}
+            </select>
+          </div>
+          <div>
+            <form onSubmit={this.handleSubmit}>
+              <button type='submit' id='btn-state-submit'>GO</button>
+            </form>
+          </div>
         </div>
       </div>
     )

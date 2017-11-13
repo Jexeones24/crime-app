@@ -7,7 +7,14 @@ import './App.css'
 class App extends Component {
   state = {
     nationalArrests: [],
-    meta:[]
+    results: {
+      colHeads: ['assault', 'larceny', 'battery'],
+      rowConfig: [
+        {1995: [20, 30, 40]},
+        {1996: [20, 30, 40]},
+        {1997: [20, 30, 40]},
+      ]
+    }
   }
 
   filter = (result) => {
@@ -18,16 +25,35 @@ class App extends Component {
     }
   }
 
+  // remove year!
+  makeRowConfig = (data) => {
+    return data.map(result => {
+    let data = [],
+        year = result['year']
+      for (var key in result) {
+        if(result.hasOwnProperty(key)){
+          data.push(result[key])
+        }
+      }
+      return {[year]: data}
+    })
+  }
+
   componentDidMount() {
-    // default table values
     getCrimeEstimatesNationwide()
       .then(data => {
-        console.log('crime estimates nationwide:', data.results)
+        console.log('results:', data.results)
+        let colHeads = Object.keys(data.results[0]).filter(key => key !== 'year')
+        console.log('colHeads:', colHeads)
+        let rowConfig = this.makeRowConfig(data.results)
+        console.log('rowConfig:', rowConfig)
 
-        let filtered = data.results.map(r => Object.keys(r))
-        let meta = filtered[0]
-        this.setState({meta})
-        console.log(meta)
+        let newState = Object.assign({}, this.state, {
+          results: Object.assign({}, this.state.results, {
+            rowConfig: rowConfig
+          })
+        })
+        console.log('new state:', newState)
       })
 
     // getCrimeEstimatesByState()
@@ -69,18 +95,21 @@ class App extends Component {
   handleStateInfo = (state) => {
     console.log('fetch state info for:', state)
     //https://www.blackbaud.com/files/support/guides/infinitytechref/Content/RESTAPI/3-0/CountryAndStateApi.htm#Country
-    // getStateInfo(state)
-    //   .then(data => {console.log('state info for CA:', data)})
+    getStateInfo(state)
+      .then(data => {console.log('state info for CA:', data)})
   }
 
   render () {
+    console.log(this.state.results)
     return (
       <div className='App'>
         <Header />
         <Filter handleStateInfo={this.handleStateInfo}/>
-        <Main
-          meta={this.state.meta}
-        />
+        {/* <Main
+          colHeads={this.state.colHeads}
+          reTitles={this.state.rowTitles}
+          results={this.state.results}
+        /> */}
         <div className='sidebar-right'></div>
         <Footer />
       </div>

@@ -3,29 +3,33 @@ import React from 'react'
 export const Table = (props) => (
   <div className='table-container'>
     <div className='main-header'>
-      <h3>{props.meta[0]}</h3>
+      <span><h3>COMPARE | SHOW GRAPH | MAP </h3></span>
+      <span><p>appears only when table is populated</p></span>
     </div>
     <table>
+      <caption>THIS IS A CAPTION</caption>
       <thead>
         <tr>
-          <th></th>
+          <th />
           {props.meta.map((m, i) => <th key={i}>{m}</th>)}
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th>Meta</th>
-          <td>data</td>
-        </tr>
-        <tr>
-          <th>Row 2</th>
-          <td>21</td>
-        </tr>
-        <tr>
-          <th>Row 3</th>
-          <td>31</td>
-        </tr>
+        {props.results.rowConfig.map((data, i) => <Row key={i} data={data} />)}
       </tbody>
     </table>
   </div>
 )
+
+// let data = {1995: [20, 30, 40]}
+const Row = ({data}) => {
+  let key = Object.keys(data)
+  return (
+    <tr>
+      <th>{key}</th>
+      {data[key].map((d, i) => (
+        <td key={i}>{d}</td>
+      ))}
+    </tr>
+  )
+}

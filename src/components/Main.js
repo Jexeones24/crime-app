@@ -3,6 +3,9 @@ import { Table } from './'
 
 export const Main = (props) => (
   <div className='main'>
-    <Table meta={props.meta} />
+    <Table
+      meta={props.meta}
+      results={props.results}
+    />
   </div>
 )
