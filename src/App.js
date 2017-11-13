@@ -6,7 +6,8 @@ import './App.css'
 
 class App extends Component {
   state = {
-    nationalArrests: []
+    nationalArrests: [],
+    meta:[]
   }
 
   filter = (result) => {
@@ -20,7 +21,14 @@ class App extends Component {
   componentDidMount() {
     // default table values
     getCrimeEstimatesNationwide()
-      .then(data => console.log('crime estimates nationwide:', data.results))
+      .then(data => {
+        console.log('crime estimates nationwide:', data.results)
+
+        let filtered = data.results.map(r => Object.keys(r))
+        let meta = filtered[0]
+        this.setState({meta})
+        console.log(meta)
+      })
 
     // getCrimeEstimatesByState()
     //   .then(data => console.log('crime estimates by state:', data.results))
@@ -71,7 +79,7 @@ class App extends Component {
         <Header />
         <Filter handleStateInfo={this.handleStateInfo}/>
         <Main
-          meta='TABLE INFO'
+          meta={this.state.meta}
         />
         <div className='sidebar-right'></div>
         <Footer />

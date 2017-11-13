@@ -19,12 +19,12 @@ h1 {
   margin-top: 0;
 }
 h3 {
+  width: 100%;
   text-align: left;
   margin-top: 20px;
-  margin-left: 2%;
-  margin-right: 2%;
-  padding: 4px;
   border: 1px solid black;
+  box-sizing:border-box;
+  overflow: hidden;
 }
 h4 {
   color: white;
@@ -102,6 +102,7 @@ table {
 td, th {
   border: 1px solid #999;
   padding: 0.5rem;
+  font-size: 12px;
   word-wrap: break-word;
 }
 .table-container {

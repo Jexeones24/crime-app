@@ -1,14 +1,15 @@
 import React from 'react'
 
-const columns = ['count', 'something', 'more things']
-const meta = ['hello', 'bye', 'suck', 'banana', 'dogs', 'cats', 'coffee', 'cookies']
-export const Table = () => (
+export const Table = (props) => (
   <div className='table-container'>
+    <div className='main-header'>
+      <h3>{props.meta[0]}</h3>
+    </div>
     <table>
       <thead>
         <tr>
           <th></th>
-          {columns.map((column, i) => <th key={i}>{column}</th>)}
+          {props.meta.map((m, i) => <th key={i}>{m}</th>)}
         </tr>
       </thead>
       <tbody>
