@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 import { getHateCrimeCounts, getCrimeEstimatesNationwide, getHateCrimesByBiasName, getHateCrimesByState, getNationalOffenders, getVictimCount, getCrimeEstimatesByState, getStateInfo } from './lib/crimeService'
-import { Table } from './components/Table'
+import { Main, Footer, Header } from './components'
 import Filter from './components/Filter'
-import { Footer } from './components/Footer'
-import { Header } from './components/Header'
 import './App.css'
 
 class App extends Component {
@@ -20,8 +18,8 @@ class App extends Component {
   }
 
   componentDidMount() {
-    getCrimeEstimatesNationwide()
-      .then(data => console.log('crime estimates nationwide:', data.results))
+    // getCrimeEstimatesNationwide()
+    //   .then(data => console.log('crime estimates nationwide:', data.results))
     // getCrimeEstimatesByState()
     //   .then(data => console.log('crime estimates by state:', data.results))
 
@@ -55,30 +53,31 @@ class App extends Component {
     //     let filtered = data.results.filter(result => result.year === '2015')
     //     console.log('victim count by offender_relationship in 2015:', filtered)
     //   })
-    // getStateInfo()
+
+  }
+
+  handleStateInfo = (state) => {
+    console.log('fetch state info for:', state)
+    //https://www.blackbaud.com/files/support/guides/infinitytechref/Content/RESTAPI/3-0/CountryAndStateApi.htm#Country
+    // getStateInfo(state)
     //   .then(data => {console.log('state info for CA:', data)})
   }
+
+
 
   render () {
     return (
       <div className='App'>
         <Header />
-        <Filter />
-        <Main />
+        <Filter handleStateInfo={this.handleStateInfo}/>
+        <Main
+          meta='TABLE INFO'
+        />
         <div className='sidebar-right'></div>
         <Footer />
       </div>
     )
   }
 }
-
-const Main = () => (
-  <div className='main'>
-    <div className='main-header'>
-      <h3>TABLE INFO</h3>
-    </div>
-    <Table />
-  </div>
-)
 
 export default App

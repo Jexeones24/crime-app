@@ -2,8 +2,17 @@ html, body {
   margin: 0;
   height: 100%;
   width:100%;
+  position:absolute;
   overflow-x: hidden;
   font-family: 'Quattrocento Sans', sans-serif;
+}
+body {
+    margin:0px;
+    padding: 0px;
+}
+.App {
+  position: absolute;
+  height: 100%
 }
 h1 {
   margin-top: 0;
@@ -58,16 +67,21 @@ a:hover {
 .sidebar-left{
 	float:left;
 	width:15%;
+  height: 100%;
 	background-color: #343434;
 }
 .main{
 	float:left;
+  height: auto;
 	width:70%;
 	background-color: white;
+  display:block;
+  overflow:auto;
 }
 .sidebar-right{
 	float:left;
 	width:15%;
+  height: 100%;
 	background-color: #343434;
 }
 .footer{
@@ -79,12 +93,9 @@ a:hover {
   color: white;
   padding-top: 8px;
 }
-.sidebar-left, .main, .sidebar-right{
-	min-height: 600px
-}
 table {
   border: 1px solid black;
-  border-spacing: 0.5rem;
+  border-spacing: 0.3rem;
 }
 td, th {
   border: 1px solid #999;
@@ -95,7 +106,7 @@ td, th {
   margin-left: 2%;
   margin-right: 2%;
 }
-.search-label, .year-label{
+.search-label, .year-label, .state-params-label{
   margin-bottom: 6px;
   margin-left: 3px;
 }
