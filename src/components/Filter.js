@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 
-const locations = ['Nationwide', 'State']
 const categories = ['Crime Estimates', 'Hate Crimes', 'Offenders', 'Victims']
 const years = ['1994', '1995', '1996', '1997', '1998', '1999', '2000', '2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016']
 
@@ -15,7 +14,6 @@ export default class Filter extends Component {
 
   handleFilterChange = (e) => {
     let property = e.target.name.toLowerCase()
-    let value = e.target.value
     this.setState({
       [property]: e.target.value,
       message: 'You selected '+e.target.value
@@ -23,7 +21,6 @@ export default class Filter extends Component {
   }
 
   render () {
-    let message='You selected '+this.state;
     return (
       <div className='sidebar-left'>
         <h4>FILTERS</h4>

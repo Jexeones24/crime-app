@@ -74,6 +74,9 @@ class App extends Component {
 
 const Main = () => (
   <div className='main'>
+    <div className='main-header'>
+      <h3>TABLE INFO</h3>
+    </div>
     <Table />
   </div>
 )
