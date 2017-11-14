@@ -97,11 +97,10 @@ class App extends Component {
       <div className='App'>
         <Header />
         <Filter handleStateInfo={this.handleStateInfo}/>
-        {/* <Main
-          colHeads={this.state.colHeads}
-          reTitles={this.state.rowTitles}
-          results={this.state.results}
-        /> */}
+
+        <Main
+          tableConfig={this.state.tableConfig}
+        />
         <div className='sidebar-right'></div>
         <Footer />
       </div>
