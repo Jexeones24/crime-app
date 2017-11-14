@@ -21,17 +21,16 @@ class App extends Component {
     }
   }
 
-  // remove year!
-  makeRowConfig = (data) => {
+  makeRowData = (data) => {
     return data.map(result => {
-    let data = [],
+    let values = [],
         year = result['year']
-      for (var key in result) {
-        if(result.hasOwnProperty(key)){
-          data.push(result[key])
+      for (const key in result) {
+        if(result.hasOwnProperty(key) && key !== 'year' ){
+          values.push(result[key])
         }
       }
-      return {[year]: data}
+      return {[year]: values}
     })
   }
 
@@ -40,8 +39,7 @@ class App extends Component {
       .then(data => {
         console.log('results:', data.results)
         let colHeads = Object.keys(data.results[0]).filter(key => key !== 'year')
-        console.log('colHeads:', colHeads)
-        let rowData = this.makeRowConfig(data.results)
+        let rowData = this.makeRowData(data.results)
         console.log('rowData:', rowData)
 
         let tableConfig = Object.assign({}, this.state.tableConfig, {
@@ -95,7 +93,6 @@ class App extends Component {
   }
 
   render () {
-    console.log(this.state.results)
     return (
       <div className='App'>
         <Header />
