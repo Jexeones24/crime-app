@@ -18,7 +18,7 @@ export default class Filter extends Component {
     this.setState({
       [property]: e.target.value,
       message: 'You selected '+e.target.value
-    }, () => console.log('state:', this.state, 'callback to App'))
+    })
   }
 
   handleSubmit = (e) => {
@@ -29,6 +29,7 @@ export default class Filter extends Component {
     return (
       <div className='state-params'>
         <div className='state-params-label'>
+          <hr/>
           <label> CHOOSE STATE</label>
         </div>
         <div className='select'>

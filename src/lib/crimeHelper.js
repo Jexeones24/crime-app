@@ -1,40 +1,59 @@
-state = {
-  results: {
-    colHeads: ['assault', 'larceny', 'battery'],
-    rowConfig: [
-      {1995: [20, 30, 40]},
-      {1996: [20, 30, 40]},
-      {1997: [20, 30, 40]},
-    ]
-  }
+import { states } from '../states'
+
+export const abbreviate = (usState) => {
+  let capitalized = usState.charAt(0).toUpperCase() + usState.slice(1).toLowerCase()
+  return states[capitalized]
 }
 
-let rows = state.results.rowConfig
-console.log('rows:', rows)
-
-var createRowHTML = (row) => {
-  var html = []
-  for (var key in row) {
-    if (row.hasOwnProperty(key)) {
-      html.push(`<th>${key}</th>`)
-      row[key].map(data => {
-        html.push(`<td>${data}</td>`)
-      })
+// returns new array of objs with modified info
+export const filterObj = (arr, keep) => {
+  for(var i = 0; i < arr.length; i++){
+    for(var key in arr[i]){
+      if(keep.indexOf(key) === -1) {
+        delete arr[i][key]
+      }
     }
-  return html
   }
+  return arr
 }
 
-renderRowHTML = (rows) => {
-  return rows.map(row => {
-    return createRowHTML(row)
-  })
+// returns indices of target values in array
+export const findMatchIndices = (sourceArray, targets) => {
+  let indices = []
+  for (var i = 0; i < sourceArray.length; i++) {
+    for (var j = 0; j < targets.length; j++) {
+      if (sourceArray[i] === targets[j]) {
+        indices.push(i)
+      }
+    }
+  }
+  return indices
 }
 
+// returns array values to keep
+export const omit = (sourceArray, indices) => {
+  for (var i = indices.length - 1; i >= 0; i--) {
+    sourceArray.splice(indices[i], 1)
+  }
+  return sourceArray
+}
 
-let html = renderRowHTML(rows)
-console.log(html)
+export const makeColHeads = (obj, trash) => {
+  let removeAt = findMatchIndices(obj, trash)
+  return Object.keys(omit(obj, removeAt))
+}
 
-// [ [ '<th>1995</th>', '<td>20</td>', '<td>30</td>', '<td>40</td>' ],
-//   [ '<th>1996</th>', '<td>20</td>', '<td>30</td>', '<td>40</td>' ],
-//   [ '<th>1997</th>', '<td>20</td>', '<td>30</td>', '<td>40</td>' ] ]
+// export const filter = (result) => {
+//   for (var key in result){
+//     if (result.hasOwnProperty(key)) {
+//       return result[key]
+//     }
+//   }
+// }
+
+// handleStateInfo = (state) => {
+  // console.log('fetch state info for:', state)
+  //https://www.blackbaud.com/files/support/guides/infinitytechref/Content/RESTAPI/3-0/CountryAndStateApi.htm#Country
+//   getStateInfo(state)
+//     .then(data => {console.log('state info for CA:', data)})
+// }

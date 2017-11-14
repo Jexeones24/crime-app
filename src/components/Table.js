@@ -1,7 +1,6 @@
 import React from 'react'
 
 export const Table = (props) => {
-  console.log('tableConfig in Table:', props.tableConfig)
   return (
     <div className='table-container'>
       <div className='main-header'>
@@ -24,7 +23,6 @@ export const Table = (props) => {
   )
 }
 
-// let data = {1995: [20, 30, 40]}
 const Row = ({data}) => {
   let key = Object.keys(data)
   return (
