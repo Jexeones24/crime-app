@@ -1,4 +1,4 @@
-import { states } from '../states'
+import { states } from '../data'
 
 export const abbreviate = (usState) => {
   let capitalized = usState.charAt(0).toUpperCase() + usState.slice(1).toLowerCase()

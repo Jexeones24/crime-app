@@ -52,3 +52,14 @@ export const states =
     'Wisconsin': 'WI',
     'Wyoming': 'WY'
   }
+
+export const captions =
+  {
+    'crimeEstimatesNationwide': 'Crime Estimates Nationwide',
+    'crimeEstimatesByState': 'Crime Estimates for the State of',
+    'hateCrimeCounts': 'Hate Crime Counts Nationwide',
+    'hateCrimesByBiasName': 'Hate Crimes By Bias Name',
+    'hateCrimesByState': 'Hate Crimes by State',
+    'offenders': 'National Offenders by',
+    victims: 'National Victim Counts by'
+  }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { states } from './states'
+import { states, captions } from './data'
 import { getHateCrimeCounts, getCrimeEstimatesNationwide, getHateCrimesByBiasName, getHateCrimesByState, getNationalOffenders, getVictimCount, getCrimeEstimatesByState, getStateInfo } from './lib/crimeService'
 import { abbreviate, makeColHeads, filterObj, findMatchIndices, omit } from './lib/crimeHelper'
 import { Main, Footer, Header } from './components'
@@ -57,6 +57,7 @@ class App extends Component {
     })
   }
   render () {
+    console.log(captions)
     const allStates = Object.keys(states)
     return (
       <div className='App'>
