@@ -11,7 +11,12 @@ export const Table = (props) => {
         <thead>
           <tr>
             <th />
-            {props.tableConfig.colHeads.map((m, i) => <th key={i}>{m}</th>)}
+
+            {props.tableConfig.colHeads.map((m, i) =>
+              <th className='rotate' key={i}>
+                <div><span>{m}</span></div>
+              </th>
+            )}
           </tr>
         </thead>
         <tbody>

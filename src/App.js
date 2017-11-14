@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { states, captions } from './data'
-import { getHateCrimeCounts, getCrimeEstimatesNationwide, getHateCrimesByBiasName, getHateCrimesByState, getNationalOffenders, getVictimCount, getCrimeEstimatesByState, getStateInfo } from './lib/crimeService'
+import { getNationalCrimeEstimates, getStateCrimeEstimates, getHateCrimesByBiasName, getHateCrimesByState, getNationalOffenders, getVictimCount,  getStateInfo } from './lib/crimeService'
 import { abbreviate, makeColHeads, filterObj, findMatchIndices, omit } from './lib/crimeHelper'
 import { Main, Footer, Header } from './components'
 import Filter from './components/Filter'
@@ -28,8 +28,8 @@ class App extends Component {
     })
   }
   handleCrimeEstimatesByState = (usState) => {
-    let abbr = abbreviate(usState).toLowerCase()
-    getCrimeEstimatesByState(abbr)
+    let abbr = abbreviate(usState)
+    getStateCrimeEstimates(abbr)
     .then(data => {
       let parsedData = JSON.parse(JSON.stringify(data.results))
       let keys = (Object.keys(data.results[0]))
@@ -45,7 +45,7 @@ class App extends Component {
     })
   }
   componentDidMount() {
-    getCrimeEstimatesNationwide()
+    getNationalCrimeEstimates()
     .then(data => {
       let trash = ['year']
       let colHeads = makeColHeads(data.results[0], trash)
@@ -55,9 +55,9 @@ class App extends Component {
       })
       this.setState({ tableConfig })
     })
+
   }
   render () {
-    console.log(captions)
     const allStates = Object.keys(states)
     return (
       <div className='App'>
@@ -78,25 +78,21 @@ class App extends Component {
   }
 }
 
-
-// args = year
-// getHateCrimeCounts()
-//   .then(data => {
-//     let filtered = data.results.filter(result => result.year === '2014')
-//     console.log('hate crimes for 2014:', filtered)
-//   })
-// args = bias_name - need a list of bias names in filter
 // getHateCrimesByBiasName()
 //   .then(data => {
+//     // filter data on front end (bias name, year, etc)
 //     let filtered = data.results.filter(result => result.bias_name === 'Anti-Bisexual')
 //     console.log('hate crimes by bias name:', filtered)
 //   })
 // args = state, bias_name (results doesn't give state in resp obj)
-// getHateCrimesByState()
+
+// let abbr = abbreviate(usState)
+// getHateCrimesByState(abbr)
 //   .then(data => {
 //     let filtered = data.results.filter(result => result.bias_name === 'Anti-Bisexual')
 //     console.log('hate crimes by state:', filtered)
 //   })
+
 // // can filter by year && ethnicity
 // getNationalOffenders()
 //   .then(data => {

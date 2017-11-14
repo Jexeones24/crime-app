@@ -43,17 +43,11 @@ export const makeColHeads = (obj, trash) => {
   return Object.keys(omit(obj, removeAt))
 }
 
-// export const filter = (result) => {
-//   for (var key in result){
-//     if (result.hasOwnProperty(key)) {
-//       return result[key]
-//     }
-//   }
-// }
+export const makeQueryParams = () => {
+
+}
 
 // handleStateInfo = (state) => {
-  // console.log('fetch state info for:', state)
-  //https://www.blackbaud.com/files/support/guides/infinitytechref/Content/RESTAPI/3-0/CountryAndStateApi.htm#Country
 //   getStateInfo(state)
 //     .then(data => {console.log('state info for CA:', data)})
 // }
