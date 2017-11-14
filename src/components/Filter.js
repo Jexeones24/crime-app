@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 
 const categories = ['Crime Estimates', 'Hate Crimes', 'Offenders', 'Victims']
 const years = ['1994', '1995', '1996', '1997', '1998', '1999', '2000', '2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016']
-const states = ['California', 'Virginia', 'New York']
 
 export default class Filter extends Component {
   state = {
@@ -35,7 +34,7 @@ export default class Filter extends Component {
         <div className='select'>
           <div>
             <select name='state' onChange={this.handleFilterChange.bind(this)}>
-              {states.map((state, i) => <option key={i} name='state' value={state}>{state}</option>)}
+              {this.props.states.map((state, i) => <option key={i} name='state' value={state}>{state}</option>)}
             </select>
           </div>
           <div>

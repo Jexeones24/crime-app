@@ -98,10 +98,12 @@ class App extends Component {
   // }
 
   render () {
+    const allStates = Object.keys(states)
     return (
       <div className='App'>
         <Header />
         <Filter
+          states={allStates}
           handleStateInfo={this.handleStateInfo}
           handleCrimeEstimatesByState={this.handleCrimeEstimatesByState}
         />
