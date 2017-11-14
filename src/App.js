@@ -6,14 +6,10 @@ import './App.css'
 
 class App extends Component {
   state = {
-    nationalArrests: [],
-    results: {
-      colHeads: ['assault', 'larceny', 'battery'],
-      rowConfig: [
-        {1995: [20, 30, 40]},
-        {1996: [20, 30, 40]},
-        {1997: [20, 30, 40]},
-      ]
+    nationalArrests: ['blah'],
+    tableConfig: {
+      colHeads: [],
+      rowData: []
     }
   }
 
@@ -45,15 +41,14 @@ class App extends Component {
         console.log('results:', data.results)
         let colHeads = Object.keys(data.results[0]).filter(key => key !== 'year')
         console.log('colHeads:', colHeads)
-        let rowConfig = this.makeRowConfig(data.results)
-        console.log('rowConfig:', rowConfig)
+        let rowData = this.makeRowConfig(data.results)
+        console.log('rowData:', rowData)
 
-        let newState = Object.assign({}, this.state, {
-          results: Object.assign({}, this.state.results, {
-            rowConfig: rowConfig
-          })
+        let tableConfig = Object.assign({}, this.state.tableConfig, {
+          colHeads, rowData
         })
-        console.log('new state:', newState)
+        console.log('old state:', this.state)
+        this.setState({ tableConfig }, () => {console.log('new State:', this.state)})
       })
 
     // getCrimeEstimatesByState()
