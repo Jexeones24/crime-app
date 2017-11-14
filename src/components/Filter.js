@@ -18,6 +18,7 @@ export default class Filter extends Component {
     this.setState({
       [property]: e.target.value,
       message: 'You selected '+e.target.value
+      // fetch to nationwide
     })
   }
 
@@ -58,24 +59,6 @@ export default class Filter extends Component {
       <div className='sidebar-left'>
         <h4>FILTERS</h4>
         <div className='controls'>
-          <div className='select-location'>
-            <div className='search-label'>
-              <label> SEARCH</label>
-            </div>
-
-            <div>
-              <input type='radio' name='location' value='nationwide' onChange={this.handleFilterChange} />
-              <label htmlFor='location'> Nationwide</label>
-            </div>
-            <div>
-              <input type='radio' name='location' value='state' onChange={this.handleFilterChange} />
-              <label htmlFor='location'> State</label>
-            </div>
-            {this.state.location.trim() == 'state' ? this.renderStateParams() : []}
-          </div>
-
-          <hr />
-
           <div className='select-category'>
             <div className='category-label'>
               <label> CATEGORY</label>
@@ -88,6 +71,23 @@ export default class Filter extends Component {
             </select>
           </div>
 
+          <hr />
+
+          <div className='select-location'>
+            <div className='search-label'>
+              <label> SEARCH</label>
+            </div>
+            <div>
+              <input type='radio' name='location' value='nationwide' onChange={this.handleFilterChange} />
+              <label htmlFor='location'> Nationwide</label>
+            </div>
+            <div>
+              <input type='radio' name='location' value='state' onChange={this.handleFilterChange} />
+              <label htmlFor='location'> State</label>
+            </div>
+              {this.state.location.trim() == 'state' ? this.renderStateParams() : []}
+          </div>
+          
           <hr />
 
           <div className='select-year'>
