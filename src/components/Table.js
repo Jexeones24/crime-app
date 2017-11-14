@@ -4,11 +4,10 @@ export const Table = (props) => {
   return (
     <div className='table-container'>
       <div className='main-header'>
-        <span><h3>COMPARE | SHOW GRAPH | MAP </h3></span>
-        <span><p>appears only when table is populated</p></span>
+        <span><p>some text</p></span>
       </div>
       <table>
-        <caption>THIS IS A CAPTION</caption>
+        <caption>{props.caption.toUpperCase()}</caption>
         <thead>
           <tr>
             <th />

@@ -108,6 +108,12 @@ td, th {
   font-size: 12px;
   word-wrap: break-word;
 }
+th {
+  background-color: yellow;
+}
+td {
+  background-color: lavender;
+}
 .table-container {
   margin-top: 20px;
   box-sizing: border-box;
@@ -143,4 +149,17 @@ td, th {
 }
 label {
   color: white;
+}
+caption {
+  color: red;
+  font-weight: bold;
+  font-size: 26px;
+}
+.btn-extra {
+  padding:3px;
+  margin-bottom: 5px;
+  border-radius: 3px;
+}
+.extras {
+  padding-bottom: 20px;
 }

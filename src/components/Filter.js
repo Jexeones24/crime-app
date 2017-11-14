@@ -30,11 +30,16 @@ export default class Filter extends Component {
       <div className='state-params'>
         <div className='state-params-label'>
           <hr/>
-          <label> CHOOSE STATE</label>
+          <div className='state-label'>
+            <label> CHOOSE STATE</label>
+          </div>
         </div>
         <div className='select'>
           <div>
-            <select name='state' onChange={this.handleFilterChange.bind(this)}>
+            <select name='state' defaultValue='no-value' onChange={this.handleFilterChange.bind(this)}>
+              <option value='no-value' disabled hidden>
+                Please select
+              </option>
               {this.props.states.map((state, i) => <option key={i} name='state' value={state}>{state}</option>)}
             </select>
           </div>
@@ -53,7 +58,6 @@ export default class Filter extends Component {
       <div className='sidebar-left'>
         <h4>FILTERS</h4>
         <div className='controls'>
-
           <div className='select-location'>
             <div className='search-label'>
               <label> SEARCH</label>
@@ -99,6 +103,14 @@ export default class Filter extends Component {
           </div>
 
           <hr/>
+
+          <div className='extras'>
+            <div>
+              <div><button className='btn-extra'>compare</button></div>
+              <div><button className='btn-extra'>graph</button></div>
+              <div><button className='btn-extra'>map</button></div>
+            </div>
+          </div>
 
         </div>
         <div className='filter-msg'>

@@ -8,7 +8,7 @@ import './App.css'
 
 class App extends Component {
   state = {
-    nationalArrests: ['blah'],
+    caption: 'Crime Estimates Nationwide',
     tableConfig: {
       colHeads: [],
       rowData: []
@@ -68,6 +68,7 @@ class App extends Component {
         />
         <Main
           tableConfig={this.state.tableConfig}
+          caption={this.state.caption}
         />
         <div className='sidebar-right'></div>
         <Footer />
