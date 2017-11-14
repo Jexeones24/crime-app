@@ -9,8 +9,8 @@ export const getCrimeEstimatesNationwide = () => {
 }
 
 // args = state postal code (ny) lower case
-export const getCrimeEstimatesByState = () => {
-  return fetch(`${BASE_URL}estimates/states/ny?page=1&per_page=50&output=json&api_key=${API_KEY}`)
+export const getCrimeEstimatesByState = (abbr) => {
+  return fetch(`${BASE_URL}estimates/states/${abbr}?page=1&per_page=50&output=json&api_key=${API_KEY}`)
   .then(resp => resp.json())
 }
 
@@ -51,7 +51,3 @@ export const getStateInfo = () => {
   return fetch(`${BASE_URL}geo/states/CA?api_key=${API_KEY}`)
   .then(resp => resp.json())
 }
-
-
-// info about states (county_id, county_name, FIPS)
-  // https://api.usa.gov/crime/fbi/ucr/geo/states/${CA}?api_key=iiHnOKfno2Mgkt5AynpvPpUQTEyxE77jo1RU8PIv

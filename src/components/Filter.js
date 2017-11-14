@@ -24,7 +24,7 @@ export default class Filter extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    this.props.handleStateInfo(this.state.state)
+    this.props.handleCrimeEstimatesByState(this.state.state)
   }
   renderStateParams = () => {
     return (

@@ -7,13 +7,14 @@ html, body {
   font-family: 'Quattrocento Sans', sans-serif;
 }
 body {
-    margin:0px;
-    padding: 0px;
+  margin:0px;
+  padding: 0px;
 }
 .App {
   position: fixed;
   height: 100%;
   width:100%;
+  overflow: scroll;
 }
 h1 {
   margin-top: 0;
@@ -70,11 +71,11 @@ a:hover {
 }
 .main{
 	float:left;
-  height: auto;
 	width:70%;
 	background-color: white;
   display:block;
-  overflow:auto;
+  overflow: scroll;
+  height:100%;
 }
 .sidebar-right{
 	float:left;
@@ -98,7 +99,8 @@ table {
   width:100%;
   table-layout: fixed;
   box-sizing:border-box;
-  overflow: hidden;
+  overflow: visible;
+  height:100%;
 }
 td, th {
   border: 1px solid #999;
@@ -111,6 +113,7 @@ td, th {
   box-sizing: border-box;
   margin-left: 18px;
   margin-right: 18px;
+  height:100%;
 }
 .search-label, .year-label, .state-params-label{
   margin-bottom: 6px;

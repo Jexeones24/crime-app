@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { states } from './states'
 import { getHateCrimeCounts, getCrimeEstimatesNationwide, getHateCrimesByBiasName, getHateCrimesByState, getNationalOffenders, getVictimCount, getCrimeEstimatesByState, getStateInfo } from './lib/crimeService'
 import { Main, Footer, Header } from './components'
 import Filter from './components/Filter'
@@ -37,21 +38,13 @@ class App extends Component {
   componentDidMount() {
     getCrimeEstimatesNationwide()
       .then(data => {
-        console.log('results:', data.results)
         let colHeads = Object.keys(data.results[0]).filter(key => key !== 'year')
         let rowData = this.makeRowData(data.results)
-        console.log('rowData:', rowData)
-
         let tableConfig = Object.assign({}, this.state.tableConfig, {
           colHeads, rowData
         })
-        console.log('old state:', this.state)
-        this.setState({ tableConfig }, () => {console.log('new State:', this.state)})
+        this.setState({ tableConfig })
       })
-
-    // getCrimeEstimatesByState()
-    //   .then(data => console.log('crime estimates by state:', data.results))
-
     // args = year
     // getHateCrimeCounts()
     //   .then(data => {
@@ -85,19 +78,33 @@ class App extends Component {
 
   }
 
-  handleStateInfo = (state) => {
-    console.log('fetch state info for:', state)
-    //https://www.blackbaud.com/files/support/guides/infinitytechref/Content/RESTAPI/3-0/CountryAndStateApi.htm#Country
-    getStateInfo(state)
-      .then(data => {console.log('state info for CA:', data)})
+  abbreviate = (usState) => {
+    let capitalized = usState.charAt(0).toUpperCase() + usState.slice(1).toLowerCase()
+    return states[capitalized]
   }
+
+  handleCrimeEstimatesByState = (usState) => {
+    let abbr = this.abbreviate(usState).toLowerCase()
+    getCrimeEstimatesByState(abbr)
+      .then(data => console.log('crime estimates by state:', data.results))
+  }
+
+
+  // handleStateInfo = (state) => {
+    // console.log('fetch state info for:', state)
+    //https://www.blackbaud.com/files/support/guides/infinitytechref/Content/RESTAPI/3-0/CountryAndStateApi.htm#Country
+  //   getStateInfo(state)
+  //     .then(data => {console.log('state info for CA:', data)})
+  // }
 
   render () {
     return (
       <div className='App'>
         <Header />
-        <Filter handleStateInfo={this.handleStateInfo}/>
-
+        <Filter
+          handleStateInfo={this.handleStateInfo}
+          handleCrimeEstimatesByState={this.handleCrimeEstimatesByState}
+        />
         <Main
           tableConfig={this.state.tableConfig}
         />
