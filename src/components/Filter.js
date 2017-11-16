@@ -87,7 +87,7 @@ export default class Filter extends Component {
             </div>
               {this.state.location.trim() == 'state' ? this.renderStateParams() : []}
           </div>
-          
+
           <hr />
 
           <div className='select-year'>
@@ -103,14 +103,6 @@ export default class Filter extends Component {
           </div>
 
           <hr/>
-
-          <div className='extras'>
-            <div>
-              <div><button className='btn-extra'>compare</button></div>
-              <div><button className='btn-extra'>graph</button></div>
-              <div><button className='btn-extra'>map</button></div>
-            </div>
-          </div>
 
         </div>
         <div className='filter-msg'>
